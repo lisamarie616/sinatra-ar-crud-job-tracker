@@ -1,16 +1,16 @@
 applicants_list = {
  "user123" => {
-  :password => "flowers",
+  :password_digest => "flowers",
   :first_name => "Rose",
   :last_name => "Red"
  },
  "scottybuttons" => {
-  :password => "bones",
+  :password_digest => "bones",
   :first_name => "Scotty",
   :last_name => "Smith"
  },
  "teddybear" => {
-  :password => "kennel",
+  :password_digest => "kennel",
   :first_name => "Teddy",
   :last_name => "Thomas"
  }
@@ -46,31 +46,32 @@ companies_list.each do |name, companies_hash|
   companies_hash.each do |attribute, value|
     c[attribute] = value
   end
+  c.save
 end
 
 jobs_list = {
   "Human Resources Coordinator" => {
     :location => "Santa Monica, CA",
-    :salary => 90,000,
+    :salary => 90000,
     :link => "http://jobview.monster.com/Human-Resources-Coordinator-Job-Los-Angeles-CA-US-162609334.aspx?mescoid=1300081001001&jobPosition=3",
     :company_id => 1
   },
   "Sales Representative" => {
     :location => "Pasadena, CA",
-    :salary => 70,000,
+    :salary => 70000,
     :link => "http://jobview.monster.com/Sales-Representative-Job-Pasadena-CA-US-162904449.aspx?mescoid=4100683001001&jobPosition=6",
     :company_id => 2
   },
   "Director of Post Production" => {
     :location => "Los Angeles, CA",
-    :salary => 100,000,
+    :salary => 100000,
     :link => "http://jobview.monster.com/Director-of-Post-Production-Job-Los-Angeles-CA-US-162297189.aspx?mescoid=1100055001001&jobPosition=7",
     :company_id => 3
   },
   "Junior Marketing Associate" => {
     :location => "Los Angeles, CA",
-    :salary => 50,000,
-    :link => "http://jobview.monster.com/Junior-Marketing-Associate-Entry-Level-Marketing-Job-Los-Angeles-CA-US-162277072.aspx?mescoid=1300092001001&jobPosition=10"
+    :salary => 50000,
+    :link => "http://jobview.monster.com/Junior-Marketing-Associate-Entry-Level-Marketing-Job-Los-Angeles-CA-US-162277072.aspx?mescoid=1300092001001&jobPosition=10",
     :company_id => 3
   }
 }
@@ -81,6 +82,7 @@ jobs_list.each do |title, jobs_hash|
   jobs_hash.each do |attribute, value|
     j[attribute] = value
   end
+  j.save
 end
 
 applications_list = [
@@ -126,4 +128,5 @@ applications_list.each do |application_hash|
   application_hash.each do |attribute, value|
     a[attribute] = value
   end
+  a.save
 end
