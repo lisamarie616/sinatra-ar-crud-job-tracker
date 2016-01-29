@@ -1,0 +1,11 @@
+<h1>Application for <%= @application.job.title %> at <%= @application.job.company.name %></h1>
+<h3>Company Info</h3>
+<p>Company Website: <%= @application.job.company.website %></p>
+<p>Company Headquarters: <%= @application.job.company.headquarters %></p>
+<h3>Application Info</h3>
+<p>Submission Date: <%= @application.submission_date.nil? ? "N/A" : @application.submission_date.strftime("%-m/%-d/%Y") %></p>
+<p>Status: <%= @application.status %></p>
+<p><a href="<%= @application.cover_letter %>" target="_blank">Cover Letter Submitted</a></p>
+<p><a href="<%= @application.resume %>" target="_blank">Resume Submitted</a></p>
+<p>Follow-up Date: <%= @application.follow_up_date || "N/A" %></p>
+<p>Application Created On: <%= @application.created_at.strftime("%-m/%-d/%Y") %></p>

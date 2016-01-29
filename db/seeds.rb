@@ -1,30 +1,3 @@
-applicants_list = {
- "user123" => {
-  :password_digest => "flowers",
-  :first_name => "Rose",
-  :last_name => "Red"
- },
- "scottybuttons" => {
-  :password_digest => "bones",
-  :first_name => "Scotty",
-  :last_name => "Smith"
- },
- "teddybear" => {
-  :password_digest => "kennel",
-  :first_name => "Teddy",
-  :last_name => "Thomas"
- }
-}
-
-applicants_list.each do |username, applicant_hash|
-  a = Applicant.new
-  a.username = username
-  applicant_hash.each do |attribute, value|
-    a[attribute] = value
-  end
-  a.save
-end
-
 companies_list = {
   "Uber" => {
     :website => "www.uber.com",

@@ -9,5 +9,6 @@ use Rack::MethodOverride
 use ApplicantController
 use ContactController
 use InterviewController
+use JobApplicationController
 use NoteController
 run ApplicationController

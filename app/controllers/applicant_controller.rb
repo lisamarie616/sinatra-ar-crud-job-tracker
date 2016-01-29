@@ -8,7 +8,7 @@ class ApplicantController < ApplicationController
     end
   end
 
-  post '/signup' do
+  post '/applicants' do
     applicant = Applicant.new(params)
     if applicant.save
       session[:id] = applicant.id
@@ -38,13 +38,9 @@ class ApplicantController < ApplicationController
     end
   end
 
-  get '/applications' do
-    erb :'applicant/index'
-  end
-
   get '/logout' do
     if logged_in?
-      session.clear
+      logout!
       redirect '/login'
     else
       redirect '/'
