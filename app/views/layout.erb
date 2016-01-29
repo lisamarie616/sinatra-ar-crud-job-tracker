@@ -12,6 +12,11 @@
     <a href="/signup">Signup</a>
     <a href="/login">Log In</a>
   <% end %>
-  <%= yield %>  
+  <%= yield %>
+  <% if flash[:error] %>
+    <% flash[:error].each do |e| %>
+      <p class="error_message"><%= e + "." %></p>
+    <% end %>
+  <% end %>
 </body>
 </html>
