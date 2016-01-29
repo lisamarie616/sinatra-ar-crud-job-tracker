@@ -6,4 +6,8 @@ end
 
 use Rack::MethodOverride
 
+use ApplicantController
+use ContactController
+use InterviewController
+use NoteController
 run ApplicationController

@@ -5,4 +5,18 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "flatiron_learn"
   end
+
+  get '/' do
+    erb :index
+  end
+
+  helpers do
+    def logged_in?
+      !!session[:id]
+    end
+
+    def current_applicant
+      Applicant.find(session[:id])
+    end
+  end
 end

@@ -5,4 +5,6 @@ class Application < ActiveRecord::Base
   has_many :application_contacts
   has_many :contacts, through: :application_contacts
   has_many :application_notes
+
+  validates :status, presence: true
 end
