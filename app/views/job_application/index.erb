@@ -1,9 +1,8 @@
 <h1>Your Applications</h1>
 <div>
   <% @applications.each do |application| %>
-    <a href="/applications/<%= application.id %>" target="_blank"><h2><%= application.job.title %> at <%= application.job.company.name %></h2></a>
+    <a href="/applications/<%= application.id %>" target="_blank"><h2><%= application.title %> at <%= application.company.name %></h2></a>
     <p>Application Submission Date: <%= application.submission_date.nil? ? "N/A" : application.submission_date.strftime("%-m/%-d/%Y") %></p>
-    <p>Application Status: <%= application.status %></p>
     <p>Follow-up Date: <%= application.follow_up_date.nil? ? "N/A" : application.follow_up_date.strftime("%A, %-m/%-d/%Y") %></p>
     <% if !application.interviews.empty? %>
       <h3>Interviews</h3>

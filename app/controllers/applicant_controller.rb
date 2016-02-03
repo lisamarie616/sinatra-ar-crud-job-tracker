@@ -12,7 +12,7 @@ class ApplicantController < ApplicationController
     applicant = Applicant.new(params)
     if applicant.save
       session[:id] = applicant.id
-      redirect '/applications'
+      redirect '/'
     else
       flash[:error] = applicant.errors.full_messages
       redirect '/signup'
@@ -31,9 +31,9 @@ class ApplicantController < ApplicationController
     applicant = Applicant.find_by(username: params[:username])
     if applicant && applicant.authenticate(params[:password])
       session[:id] = applicant.id
-      redirect '/applications'
+      redirect '/'
     else
-      flash[:error] = ["Login unsuccessful. Please check your username and password and try again."]
+      flash[:error] = ["Login unsuccessful. Please check your username and password and try again"]
       redirect '/login'
     end
   end

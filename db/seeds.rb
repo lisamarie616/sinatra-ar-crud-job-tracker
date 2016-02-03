@@ -1,14 +1,14 @@
 companies_list = {
   "Uber" => {
-    :website => "www.uber.com",
+    :website => "https://www.uber.com/",
     :headquarters => "New York, NY"
   },
   "Via" => {
-    :website => "www.ridewithvia.com",
+    :website => "http://ridewithvia.com/",
     :headquarters => "New York, NY"
   },
   "Lyft" => {
-    :website => "www.lyft.com",
+    :website => "https://lyft.com/",
     :headquarters => "Los Angeles, CA"
   }
 }

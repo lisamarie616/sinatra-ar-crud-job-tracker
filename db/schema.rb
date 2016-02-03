@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160128180415) do
   create_table "applications", force: :cascade do |t|
     t.string   "title"
     t.string   "location"
-    t.integer  "salary"
+    t.string   "salary"
     t.string   "link"
     t.datetime "submission_date"
     t.string   "cover_letter"

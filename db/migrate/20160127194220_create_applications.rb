@@ -3,7 +3,7 @@ class CreateApplications < ActiveRecord::Migration
     create_table :applications do |t|
       t.string :title
       t.string :location
-      t.integer :salary
+      t.string :salary
       t.string :link
       t.datetime :submission_date
       t.string :cover_letter

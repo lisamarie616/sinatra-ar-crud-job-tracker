@@ -1,22 +1,21 @@
-<h1>Application for <%= @application.job.title %> at <%= @application.job.company.name %></h1>
+<h1>Application for <%= @application.title %> at <%= @application.company.name %></h1>
 <a href="/applications/<%= @application.id %>/edit">Edit Application</a>
 
 <h3>Company Info</h3>
-<% if @application.job.company.website %>
-  <p><a href="<%= @application.job.company.website %>" target="_blank">Website</a></p>
+<% if @application.company.website %>
+  <p><a href="<%= @application.company.website %>" target="_blank">Website</a></p>
 <% end %>
-<p>Headquarters: <%= @application.job.company.headquarters %></p>
+<p>Headquarters: <%= @application.company.headquarters %></p>
 
 <h3>Application Info</h3>
 <p>Submission Date: <%= @application.submission_date.nil? ? "N/A" : @application.submission_date.strftime("%-m/%-d/%Y") %></p>
-<p>Status: <%= @application.status %></p>
 <% if @application.cover_letter %>
   <p><a href="<%= @application.cover_letter %>" target="_blank">Cover Letter Submitted</a></p>
 <% end %>
 <% if @application.resume %>
   <p><a href="<%= @application.resume %>" target="_blank">Resume Submitted</a></p>
 <% end %>
-<p>Follow-up Date: <%= @application.follow_up_date || "N/A" %></p>
+<p>Follow-up Date: <%= @application.follow_up_date.nil? ? "N/A" : @application.follow_up_date.strftime("%A, %-m/%-d/%Y") %></p>
 
 <% if !@application.interviews.empty? %>
   <h3>Interviews</h3>

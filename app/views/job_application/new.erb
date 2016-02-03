@@ -1,29 +1,25 @@
 <h1>New Application</h1>
+<h3><%= @company.name %></h3>
+<h3><a href="<%= @company.website %>" target="_blank"><%= @company.website %></a></h3>
+<h3><%= @company.headquarters %></h3>
 <form action="/applications" method="post">
-  <label for="company_name">Company Name:</label>
-  <input type="text" id="company_name" name="company[name]"><br><br>
-  <label for="company_website">Company Website:</label>
-  <input type="text" id="company_website" name="company[website]"><br><br>
-  <label for="company_headquarters">Company Headquarters</label>
-  <input type="text" id="company_headquarters" name="company[headquarters]"><br><br>
+  <input type="hidden" value="<%= @company.name %>" name="company[name]">
+  <input type="hidden" value="<%= @company.website %>" name="company[website]">
+  <input type="hidden" value="<%= @company.headquarters %>" name="company[headquarters]">
   <label for="title">Job Title:</label>
-  <input type="text" id="title" name="job[title]"><br><br>
+  <input type="text" id="title" name="application[title]"><br><br>
   <label for="location">Job Location:</label>
-  <input type="text" id="location" name="job[location]"><br><br>
+  <input type="text" id="location" name="application[location]"><br><br>
   <label for="salary">Salary:</label>
-  <input type="text" id="salary" name="job[salary]"><br><br>
+  <input type="text" id="salary" name="application[salary]"><br><br>
   <label for="link">Link to Job Description:</label>
-  <input type="text" id="link" name="job[link]"><br><br>
+  <input type="text" id="link" name="application[link]"><br><br>
   <label for="submission_date">Submission Date:</label>
   <input type="text" id="submission_date" name="application[submission_date]"><br><br>
   <label for="cover_letter">Cover Letter (link to document):</label>
   <input type="text" id="cover_letter" name="application[cover_letter]"><br><br>
   <label for="resume">Resume (link to document):</label>
   <input type="text" id="resume" name="application[resume]"><br><br>
-  <p>Status</p>
-  <input type="checkbox" name="application[status]" value="not started">Not Started<br>
-  <input type="checkbox" name="application[status]" value="in progress">In Progress<br>
-  <input type="checkbox" name="application[status]" value="completed">Completed<br><br>
   <label for="follow_up">Follow-up Date:</label>
   <input type="text" id="follow_up" name="application[follow_up_date]"><br><br>
   <input type="submit" value="Create New Application">
