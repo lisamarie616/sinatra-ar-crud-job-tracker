@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_applicant
-      @current_applicant ||= Applicant.find(session[:id])
+      @current_applicant ||= Applicant.find(session[:id]) if session[:id]
     end
 
     def logout!

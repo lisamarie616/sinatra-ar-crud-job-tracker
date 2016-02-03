@@ -1,10 +1,10 @@
 class Application < ActiveRecord::Base
   belongs_to :applicant
-  belongs_to :job
+  belongs_to :company
   has_many :interviews
   has_many :application_contacts
   has_many :contacts, through: :application_contacts
-  has_many :application_notes
+  has_many :notes
 
-  validates :status, presence: true
+  validates :title, presence: true
 end

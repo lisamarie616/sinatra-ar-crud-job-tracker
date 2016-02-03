@@ -1,6 +1,6 @@
 class Applicant < ActiveRecord::Base
   has_many :applications
-  has_many :jobs, through: :applications
+  has_many :companies, through: :applications
 
   has_secure_password
 
