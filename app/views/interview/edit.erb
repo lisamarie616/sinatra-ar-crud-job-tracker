@@ -4,7 +4,7 @@
 <form action="/interviews/<%= @interview.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="put">
   <label for="date">Date and Time (ex: 8/6/1991 at 1:30pm OR tomorrow at noon):</label>
-  <input type="text" id="date" name="date" value="<%= @interview.date.localtime.strftime("%A, %-m/%-d/%Y at %-l:%M%P") %>"><br><br>
+  <input type="text" id="date" name="date" value="<%= @interview.date.localtime.strftime("%-m/%-d/%Y at %-l:%M%P") %>"><br><br>
   <label for="thank_yous_sent">Thank Yous Sent On (enter date):</label>
   <input type="text" id="thank_yous_sent" name="thank_yous_sent" value="<%= @interview.thank_yous_sent.nil? ? "N/A" : @interview.thank_yous_sent.localtime.strftime("%-m/%-d/%Y") %>"><br><br>
   <input type="submit" value="Submit">

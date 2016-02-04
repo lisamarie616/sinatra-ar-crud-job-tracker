@@ -8,7 +8,6 @@ use Rack::MethodOverride
 
 use ApplicantController
 use CompanyController
-use ContactController
 use InterviewController
 use JobApplicationController
 use NoteController

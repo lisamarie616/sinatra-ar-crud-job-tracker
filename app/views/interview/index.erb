@@ -1,7 +1,8 @@
 <h1>Your Interviews</h1>
 <% @interviews.each do |interview| %>
-  <%= interview.application.title %>
-  interview.application.company.name
-  interview.date
-  interview.thank_yous_sent
+  <h3><%= interview.application.title %> at <%= interview.application.company.name %></h3>
+  <p><%= interview.date.localtime.strftime("%A, %-m/%-d/%Y at %-l:%M%P") %> <a href="/interviews/<%= interview.id %>/edit">Edit</a></p>
+  <% if interview.thank_yous_sent %>
+    <p>Thank Yous Sent On: <%= interview.thank_yous_sent.localtime.strftime("%-m/%-d/%Y") %></p>
+  <% end %>
 <% end %>

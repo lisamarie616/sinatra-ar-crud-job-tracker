@@ -1,13 +1,5 @@
 class JobApplicationController < ApplicationController
 
-  # get '/applications/new' do
-  #   if logged_in?
-  #     erb :'job_application/new'
-  #   else
-  #     redirect '/login'
-  #   end
-  # end
-
   post '/applications' do
     @company = Company.find_by(params[:company])
     application = Application.new(params[:application])

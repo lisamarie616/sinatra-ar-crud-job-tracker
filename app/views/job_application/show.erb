@@ -21,6 +21,7 @@
   <h3>Interviews</h3>
   <% @application.interviews.each do |interview| %>
     <p>Interview Date: <%= interview.date.localtime.strftime("%A, %-m/%-d/%Y at %-l:%M%P") %></p>
+    <p>Thank Yous Sent On: <%= interview.thank_yous_sent.nil? ? "N/A" : interview.thank_yous_sent.localtime.strftime("%A, %-m/%-d/%Y") %></p>
     <form action="/interviews/<%= interview.id %>/edit" method="get">
       <input type="submit" value="edit">
     </form>
@@ -33,12 +34,6 @@
 <form action="/interviews/new" method="get">
   <input type="hidden" value="<%= @application.id %>" name="application_id">
   <input type="submit" value="Add Interview">
-</form>
-
-<h3>Contact Info</h3>
-<form action="/contacts/new" method="get">
-  <input type="hidden" value="<%= @application.id %>" name="application_id">
-  <input type="submit" value="Add Contact">
 </form>
 
 <h3>Notes</h3>

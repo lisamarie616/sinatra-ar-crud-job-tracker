@@ -23,15 +23,15 @@ class InterviewController < ApplicationController
     end
   end
 
-  # get '/interviews' do
-  #   if logged_in?
-  #     @interviews = current_applicant.interviews
-  #     erb :'interview/index'
-  #   else
-  #     flash[:error] = ["Please signup or login to continue"]
-  #     redirect '/login'
-  #   end
-  # end
+  get '/interviews' do
+    if logged_in?
+      @interviews = current_applicant.interviews
+      erb :'interview/index'
+    else
+      flash[:error] = ["Please signup or login to continue"]
+      redirect '/login'
+    end
+  end
 
   get '/interviews/:id/edit' do
     @interview = Interview.find(params[:id])

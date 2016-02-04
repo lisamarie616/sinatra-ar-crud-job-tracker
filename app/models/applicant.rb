@@ -9,6 +9,6 @@ class Applicant < ActiveRecord::Base
   validates :password, length: { minimum: 7 }
 
   def interviews
-    self.applications.collect {|application| application.interviews}
+    self.applications.collect {|application| application.interviews}.flatten.compact
   end
 end

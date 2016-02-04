@@ -20,11 +20,6 @@ ActiveRecord::Schema.define(version: 20160128180415) do
     t.string "last_name"
   end
 
-  create_table "application_contacts", force: :cascade do |t|
-    t.integer "application_id"
-    t.integer "contact_id"
-  end
-
   create_table "applications", force: :cascade do |t|
     t.string   "title"
     t.string   "location"
@@ -44,16 +39,6 @@ ActiveRecord::Schema.define(version: 20160128180415) do
     t.string "name"
     t.string "website"
     t.string "headquarters"
-  end
-
-  create_table "contacts", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "phone_number"
-    t.string   "role"
-    t.datetime "follow_up_date"
-    t.integer  "company_id"
   end
 
   create_table "interviews", force: :cascade do |t|
