@@ -1,0 +1,10 @@
+<h1>Add a Note</h1>
+<h3>Application for <%= @application.title %> at <%= @application.company.name %></h3>
+
+<form action="/notes" method="post">
+  <input type="hidden" value="<%= @application.id %>" name="application_id">
+  <label for="date">Date:</label>
+  <input type="text" id="date" name="date"><br><br>
+  <textarea name="notes" id="notes" cols="30" rows="10"></textarea><br><br>
+  <input type="submit" value="Add Note">
+</form>

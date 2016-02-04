@@ -72,6 +72,16 @@ class JobApplicationController < ApplicationController
       redirect '/login'
     end
   end
+
+  delete '/applications/:id' do
+    application = Application.find(params[:id])
+    if logged_in? && current_applicant.applications.find_by(id: params[:id])
+      application.destroy
+      redirect "/applications"
+    else
+      redirect '/login'
+    end
+  end
 end
 
 

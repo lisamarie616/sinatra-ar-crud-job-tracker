@@ -1,4 +1,6 @@
 <h1>Add Interview Information</h1>
+<h3>Application for <%= @application.title %> at <%= @application.company.name %></h3>
+
 <form action="/interviews" method="post">
   <input type="hidden" value="<%= @application.id %>" name="application_id">
   <label for="date">Date and Time (ex: 8/6/1991 at 1:30pm OR tomorrow at noon):</label>

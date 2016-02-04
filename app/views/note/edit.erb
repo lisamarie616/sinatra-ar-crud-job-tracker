@@ -1,0 +1,10 @@
+<h1>Edit Note</h1>
+<h3>Application for <%= @note.application.title %> at <%= @note.application.company.name %></h3>
+
+<form action="/notes/<%= @note.id %>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="put">
+  <label for="date">Date:</label>
+  <input type="text" id="date" name="date" value="<%= @note.date.localtime.strftime("%-m/%-d/%Y") %>"><br><br>
+  <textarea name="notes" id="notes" cols="30" rows="10"><%= @note.notes %></textarea><br><br>
+  <input type="submit" value="Edit Note">
+</form>

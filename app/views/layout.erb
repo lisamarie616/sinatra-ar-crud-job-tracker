@@ -7,7 +7,11 @@
 <body>
   <a href="/">Home</a>
   <% if logged_in? %>
+    <a href="/companies/new">Create a New Application</a>
+    <a href="/applications">View All Applications</a>
+    <a href="/interviews">View All Interviews</a>
     <a href="/logout">Log Out</a>
+    <p>You are logged in as <%= current_applicant.username %></p>
   <% else %>
     <a href="/signup">Sign Up</a>
     <a href="/login">Log In</a>
