@@ -1,0 +1,24 @@
+<h1>Edit Application</h1>
+<h3><%= @application.company.name %></h3>
+<h3><a href="<%= @application.company.website %>" target="_blank"><%= @application.company.website %></a></h3>
+<h3><%= @application.company.headquarters %></h3>
+<form action="/applications/<%= @application.id %>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="put">
+  <label for="title">Job Title:</label>
+  <input type="text" id="title" name="title" value="<%= @application.title %>"><br><br>
+  <label for="location">Job Location:</label>
+  <input type="text" id="location" name="location" value="<%= @application.location %>"><br><br>
+  <label for="salary">Salary:</label>
+  <input type="text" id="salary" name="salary" value="<%= @application.salary %>"><br><br>
+  <label for="link">Link to Job Description:</label>
+  <input type="text" id="link" name="link" value="<%= @application.link %>"><br><br>
+  <label for="submission_date">Submission Date:</label>
+  <input type="text" id="submission_date" name="submission_date" value="<%= @application.submission_date.nil? ? "N/A" : @application.submission_date.strftime("%-m/%-d/%Y") %>"><br><br>
+  <label for="cover_letter">Cover Letter (link to document):</label>
+  <input type="text" id="cover_letter" name="cover_letter" value="<%= @application.cover_letter %>"><br><br>
+  <label for="resume">Resume (link to document):</label>
+  <input type="text" id="resume" name="resume" value="<%= @application.resume %>"><br><br>
+  <label for="follow_up">Follow-up Date:</label>
+  <input type="text" id="follow_up" name="follow_up_date" value="<%= @application.follow_up_date.nil? ? "N/A" : @application.follow_up_date.strftime("%A, %-m/%-d/%Y") %>"><br><br>
+  <input type="submit" value="Edit Application">
+</form>

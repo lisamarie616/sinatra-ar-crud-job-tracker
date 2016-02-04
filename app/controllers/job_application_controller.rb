@@ -41,4 +41,41 @@ class JobApplicationController < ApplicationController
       redirect '/login'
     end
   end
+
+  get '/applications/:id/edit' do
+    if logged_in? && current_applicant.applications.find_by(id: params[:id])
+      @application = Application.find(params[:id])
+      erb :'job_application/edit'
+    else
+      redirect '/login'
+    end
+  end
+
+  put '/applications/:id' do
+    if logged_in? && current_applicant.applications.find_by(id: params[:id])
+      application = Application.find(params[:id])
+      application.title = params[:title]
+      application.location = params[:location]
+      application.salary = params[:salary]
+      application.link = params[:link]
+      application.submission_date = Chronic.parse(params[:submission_date])
+      application.cover_letter = params[:cover_letter]
+      application.resume = params[:resume]
+      application.follow_up_date = Chronic.parse(params[:follow_up_date])
+      if application.save
+        redirect "/applications/#{application.id}"
+      else
+        flash[:error] = application.errors.full_messages
+        redirect "/applications/#{application.id}/edit"
+      end
+    else
+      redirect '/login'
+    end
+  end
 end
+
+
+
+
+
+

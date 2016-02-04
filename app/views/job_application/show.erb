@@ -20,20 +20,31 @@
 <% if !@application.interviews.empty? %>
   <h3>Interviews</h3>
   <% @application.interviews.each do |interview| %>
-    <p>Interview Date: <%= interview.date.strftime("%A, %-m/%-d/%Y at %l%p") %> <a href="/interviews/<%= interview.id %>/edit">Edit</a></p>
+    <p>Interview Date: <%= interview.date.localtime.strftime("%A, %-m/%-d/%Y at %-l:%M%P") %>
+      <form action="/interviews/<%= interview.id %>/edit" method="get">
+        <input type="submit" value="edit">
+      </form>
+      <form action="/interviews/<%= interview.id %>" method="post">
+        <input type="hidden" id="hidden" name="_method" value="delete">
+        <input type="submit" value="delete">
+      </form>
+    </p>
   <% end %>
 <% end %>
-<form action="/interview/new" method="get">
+<form action="/interviews/new" method="get">
+  <input type="hidden" value="<%= @application.id %>" name="application_id">
   <input type="submit" value="Add Interview">
 </form>
 
 <h3>Contact Info</h3>
 <form action="/contacts/new" method="get">
+  <input type="hidden" value="<%= @application.id %>" name="application_id">
   <input type="submit" value="Add Contact">
 </form>
 
 <h3>Notes</h3>
 <form action="/notes/new" method="get">
+  <input type="hidden" value="<%= @application.id %>" name="application_id">
   <input type="submit" value="Add Note">
 </form><br><br>
 
