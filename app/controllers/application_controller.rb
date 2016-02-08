@@ -1,4 +1,5 @@
 class ApplicationController < Sinatra::Base
+  helpers Sinatra::ContentFor
   register Sinatra::Flash
 
   configure do

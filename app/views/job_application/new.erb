@@ -1,26 +1,52 @@
-<h1>New Application</h1>
-<h3><%= @company.name %></h3>
-<h3><a href="<%= @company.website %>" target="_blank"><%= @company.website %></a></h3>
-<h3><%= @company.headquarters %></h3>
-<form action="/applications" method="post">
-  <input type="hidden" value="<%= @company.name %>" name="company[name]">
-  <input type="hidden" value="<%= @company.website %>" name="company[website]">
-  <input type="hidden" value="<%= @company.headquarters %>" name="company[headquarters]">
-  <label for="title">Job Title:</label>
-  <input type="text" id="title" name="application[title]"><br><br>
-  <label for="location">Job Location:</label>
-  <input type="text" id="location" name="application[location]"><br><br>
-  <label for="salary">Salary:</label>
-  <input type="text" id="salary" name="application[salary]"><br><br>
-  <label for="link">Link to Job Description:</label>
-  <input type="text" id="link" name="application[link]"><br><br>
-  <label for="submission_date">Submission Date:</label>
-  <input type="text" id="submission_date" name="application[submission_date]"><br><br>
-  <label for="cover_letter">Cover Letter (link to document):</label>
-  <input type="text" id="cover_letter" name="application[cover_letter]"><br><br>
-  <label for="resume">Resume (link to document):</label>
-  <input type="text" id="resume" name="application[resume]"><br><br>
-  <label for="follow_up">Follow-up Date:</label>
-  <input type="text" id="follow_up" name="application[follow_up_date]"><br><br>
-  <input type="submit" value="Create New Application">
-</form>
+<div class="container">
+  <div class="page-header">
+    <h1>New Application</h1>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @company.name %></h3>
+    </div>
+    <div class="panel-body">
+      <a href="<%= @company.website %>" target="_blank"><%= @company.website %></a><br>
+      <%= @company.headquarters %>
+    </div>
+  </div>
+  <form action="/applications" method="post">
+    <input type="hidden" value="<%= @company.name %>" name="company[name]">
+    <input type="hidden" value="<%= @company.website %>" name="company[website]">
+    <input type="hidden" value="<%= @company.headquarters %>" name="company[headquarters]">
+    <div class="form-group">
+      <label for="title">Job Title:</label>
+      <input type="text" id="title" name="application[title]" class="form-control" required autofocus>
+    </div>
+    <div class="form-group">
+      <label for="location">Job Location:</label>
+      <input type="text" id="location" name="application[location]" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary:</label>
+      <input type="text" id="salary" name="application[salary]" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="link">Link to Job Description:</label>
+      <input type="text" id="link" name="application[link]" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="submission_date">Submission Date:</label>
+      <input type="text" id="submission_date" name="application[submission_date]" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="cover_letter">Cover Letter (link to document):</label>
+      <input type="text" id="cover_letter" name="application[cover_letter]" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="resume">Resume (link to document):</label>
+      <input type="text" id="resume" name="application[resume]" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="follow_up">Follow-up Date:</label>
+      <input type="text" id="follow_up" name="application[follow_up_date]" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Create New Application</button>
+  </form>
+</div>

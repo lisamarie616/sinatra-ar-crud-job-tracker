@@ -1,8 +1,19 @@
-<h1>Your Interviews</h1>
-<% @interviews.each do |interview| %>
-  <h3><%= interview.application.title %> at <%= interview.application.company.name %></h3>
-  <p><%= interview.date.localtime.strftime("%A, %-m/%-d/%Y at %-l:%M%P") %> <a href="/interviews/<%= interview.id %>/edit">Edit</a></p>
-  <% if interview.thank_yous_sent %>
-    <p>Thank Yous Sent On: <%= interview.thank_yous_sent.localtime.strftime("%-m/%-d/%Y") %></p>
+<div class="container">
+  <div class="page-header">
+    <h1>Your Interviews</h1>
+  </div>
+  <% @interviews.each do |interview| %>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2 class="panel-title"><%= interview.application.title %> at <%= interview.application.company.name %></h3>
+    </div>
+    <div class="panel-body">
+      <p><%= interview.date.localtime.strftime("%A, %-m/%-d/%Y at %-l:%M%P") %></p>
+      <% if interview.thank_yous_sent %>
+        <p>Thank Yous Sent On: <%= interview.thank_yous_sent.localtime.strftime("%-m/%-d/%Y") %></p>
+      <% end %>
+      <a class="btn btn-primary btn-sm" href="/interviews/<%= interview.id %>/edit" role="button">edit</a>
+    </div>
+  </div>
   <% end %>
-<% end %>
+</div>

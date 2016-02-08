@@ -1,14 +1,21 @@
-<h1>Signup</h1>
-<form action="/applicants" method="post">
-  <label for="username">Username:</label>
-  <input type="text" id="username" name="username"><br><br>
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password"><br><br>
-  <label for="password_confirmation">Confirm Password:</label>
-  <input type="password" id="password_confirmation" name="password_confirmation"><br><br>
-  <label for="first_name">First Name</label>
-  <input type="text" id="first_name" name="first_name"><br><br>
-  <label for="last_name">Last Name</label>
-  <input type="text" id="last_name" name="last_name"><br><br>
-  <input type="submit" value="Sign Up">
-</form>
+<% content_for :head do %>
+  <link href="/stylesheets/signup.css" rel="stylesheet">
+<% end %>
+<body>
+  <div class="container">
+    <form class="form-signup" action="/applicants" method="post">
+      <h2 class="form-signup-heading">Sign Up</h2>
+      <label for="username" class="sr-only">Username:</label>
+      <input type="text" id="username" name="username" class="form-control username" placeholder="Username" required autofocus>
+      <label for="password" class="sr-only">Password:</label>
+      <input type="password" id="password" name="password" class="form-control password" placeholder="Password" required>
+      <label for="password_confirmation" class="sr-only">Confirm Password:</label>
+      <input type="password" id="password_confirmation" name="password_confirmation" class="form-control confirm_password" placeholder="Confirm Password" required>
+      <label for="first_name" class="sr-only">First Name</label>
+      <input type="text" id="first_name" name="first_name" class="form-control first_name" placeholder="First Name">
+      <label for="last_name" class="sr-only">Last Name</label>
+      <input type="text" id="last_name" name="last_name" class="form-control last_name" placeholder="Last Name">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+    </form>
+  </div>
+</body>

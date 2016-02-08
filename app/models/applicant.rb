@@ -1,5 +1,6 @@
 class Applicant < ActiveRecord::Base
   has_many :applications
+  has_many :interviews, through: :applications
   has_many :companies, through: :applications
 
   has_secure_password
@@ -8,7 +9,4 @@ class Applicant < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :password, length: { minimum: 7 }
 
-  def interviews
-    self.applications.collect {|application| application.interviews}.flatten.compact
-  end
 end

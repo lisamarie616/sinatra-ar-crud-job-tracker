@@ -1,14 +1,27 @@
-<h1>Your Applications</h1>
-<div>
+<div class="container">
+  <div class="page-header">
+    <h1>Your Applications</h1>
+  </div>
+  <% if current_applicant.applications.empty? %>
+    <h4>You don't currenlty have any applications in the tracker. Select "Create a New Application" to get started!</h4>
+  <% end %>
+
   <% @applications.each do |application| %>
-    <a href="/applications/<%= application.id %>"><h2><%= application.title %> at <%= application.company.name %></h2></a>
-    <p>Application Submission Date: <%= application.submission_date.nil? ? "N/A" : application.submission_date.localtime.strftime("%-m/%-d/%Y") %></p>
-    <p>Follow-up Date: <%= application.follow_up_date.nil? ? "N/A" : application.follow_up_date.localtime.strftime("%A, %-m/%-d/%Y") %></p>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2 class="panel-title"><%= application.title %> at <%= application.company.name %></h2></a>
+    </div>
+    <div class="panel-body">
+      <p>Submission Date: <%= application.submission_date.nil? ? "N/A" : application.submission_date.localtime.strftime("%-m/%-d/%Y") %></p>
+      <p>Follow-up Date: <%= application.follow_up_date.nil? ? "N/A" : application.follow_up_date.localtime.strftime("%A, %-m/%-d/%Y") %></p>
     <% if !application.interviews.empty? %>
-      <h3>Interviews</h3>
+      <h5>Interviews</h5>
       <% application.interviews.each do |interview| %>
         <p>Interview Date: <%= interview.date.localtime.strftime("%A, %-m/%-d/%Y at %l%p") %></p>
       <% end %>
     <% end %>
+    <a class="btn btn-primary btn-sm" href="/applications/<%= application.id %>" role="button">View details »</a>
+    </div>
+  </div>
   <% end %>
 </div>

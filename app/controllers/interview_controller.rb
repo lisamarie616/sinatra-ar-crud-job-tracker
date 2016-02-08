@@ -1,7 +1,7 @@
 class InterviewController < ApplicationController
 
   get '/interviews/new' do
-    if logged_in?
+    if logged_in? && current_applicant.applications.find_by(id: params[:application_id])
       @application = Application.find(params[:application_id])
       erb :'interview/new'
     else

@@ -1,58 +1,62 @@
-<h1>Application for <%= @application.title %> at <%= @application.company.name %></h1>
-<a href="/applications/<%= @application.id %>/edit">Edit Application</a>
+<div class="container">
+  <div class="page-header">
+    <h2>Application for <%= @application.title %> at <%= @application.company.name %></h2>
+    <a class="btn btn-xs btn-primary" href="/applications/<%= @application.id %>/edit" role="button">edit</a>
+  </div>
 
-<h3>Company Info</h3>
-<% if @application.company.website %>
-  <p><a href="<%= @application.company.website %>" target="_blank">Website</a></p>
-<% end %>
-<p>Headquarters: <%= @application.company.headquarters %></p>
-
-<h3>Application Info</h3>
-<p>Submission Date: <%= @application.submission_date.nil? ? "N/A" : @application.submission_date.localtime.strftime("%-m/%-d/%Y") %></p>
-<% if @application.cover_letter %>
-  <p><a href="<%= @application.cover_letter %>" target="_blank">Cover Letter Submitted</a></p>
-<% end %>
-<% if @application.resume %>
-  <p><a href="<%= @application.resume %>" target="_blank">Resume Submitted</a></p>
-<% end %>
-<p>Follow-up Date: <%= @application.follow_up_date.nil? ? "N/A" : @application.follow_up_date.localtime.strftime("%A, %-m/%-d/%Y") %></p>
-
-<% if !@application.interviews.empty? %>
-  <h3>Interviews</h3>
-  <% @application.interviews.each do |interview| %>
-    <p>Interview Date: <%= interview.date.localtime.strftime("%A, %-m/%-d/%Y at %-l:%M%P") %></p>
-    <p>Thank Yous Sent On: <%= interview.thank_yous_sent.nil? ? "N/A" : interview.thank_yous_sent.localtime.strftime("%A, %-m/%-d/%Y") %></p>
-    <form action="/interviews/<%= interview.id %>/edit" method="get">
-      <input type="submit" value="edit">
-    </form>
-    <form action="/interviews/<%= interview.id %>" method="post">
-      <input type="hidden" id="hidden" name="_method" value="delete">
-      <input type="submit" value="delete">
-    </form>
+  <h3>Company Info</h3>
+  <% if @application.company.website %>
+    <p>Website: <a href="<%= @application.company.website %>" target="_blank"><%= @application.company.website %></a></p>
   <% end %>
-<% end %>
-<form action="/interviews/new" method="get">
-  <input type="hidden" value="<%= @application.id %>" name="application_id">
-  <input type="submit" value="Add Interview">
-</form>
+  <p>Headquarters: <%= @application.company.headquarters %></p>
 
-<h3>Notes</h3>
-<% @application.notes.each do |note| %>
-  <p><%= note.date.nil? ? "N/A" : note.date.localtime.strftime("%-m/%-d/%Y") %>: <%= note.notes %></p>
-  <form action="/notes/<%= note.id %>/edit" method="get">
-    <input type="submit" value="edit">
+  <h3>Application Info</h3>
+  <p>Submission Date: <%= @application.submission_date.nil? ? "N/A" : @application.submission_date.localtime.strftime("%-m/%-d/%Y") %></p>
+  <% if @application.cover_letter %>
+    <p><a href="<%= @application.cover_letter %>" target="_blank">Cover Letter Submitted</a></p>
+  <% end %>
+  <% if @application.resume %>
+    <p><a href="<%= @application.resume %>" target="_blank">Resume Submitted</a></p>
+  <% end %>
+  <p>Follow-up Date: <%= @application.follow_up_date.nil? ? "N/A" : @application.follow_up_date.localtime.strftime("%A, %-m/%-d/%Y") %></p>
+
+  <% if !@application.interviews.empty? %>
+    <h3>Interviews</h3>
+    <% @application.interviews.each do |interview| %>
+      <p>Interview Date: <%= interview.date.localtime.strftime("%A, %-m/%-d/%Y at %-l:%M%P") %></p>
+      <p>Thank Yous Sent On: <%= interview.thank_yous_sent.nil? ? "N/A" : interview.thank_yous_sent.localtime.strftime("%A, %-m/%-d/%Y") %></p>
+      <form action="/interviews/<%= interview.id %>/edit" method="get">
+        <input type="submit" value="edit" class="btn btn-xs btn-primary">
+      </form>
+      <form action="/interviews/<%= interview.id %>" method="post">
+        <input type="hidden" id="hidden" name="_method" value="delete">
+        <input type="submit" value="delete" class="btn btn-xs btn-primary">
+      </form><br>
+    <% end %>
+  <% end %>
+  <form action="/interviews/new" method="get">
+    <input type="hidden" value="<%= @application.id %>" name="application_id">
+    <input type="submit" value="Add Interview" class="btn btn-primary">
   </form>
-  <form action="/notes/<%= note.id %>" method="post">
+
+  <h3>Notes</h3>
+  <% @application.notes.each do |note| %>
+    <p><%= note.date.nil? ? "N/A" : note.date.localtime.strftime("%-m/%-d/%Y") %>: <%= note.notes %></p>
+    <form action="/notes/<%= note.id %>/edit" method="get">
+      <input type="submit" value="edit" class="btn btn-xs btn-primary">
+    </form>
+    <form action="/notes/<%= note.id %>" method="post">
+      <input type="hidden" id="hidden" name="_method" value="delete">
+      <input type="submit" value="delete" class="btn btn-xs btn-primary">
+    </form><br>
+  <% end %>
+  <form action="/notes/new" method="get">
+    <input type="hidden" value="<%= @application.id %>" name="application_id">
+    <input type="submit" value="Add Note" class="btn btn-primary">
+  </form><br><br>
+
+  <form action="/applications/<%= @application.id %>" method="post">
     <input type="hidden" id="hidden" name="_method" value="delete">
-    <input type="submit" value="delete">
+    <input type="submit" value="Delete Application" class="btn btn-primary">
   </form>
-<% end %>
-<form action="/notes/new" method="get">
-  <input type="hidden" value="<%= @application.id %>" name="application_id">
-  <input type="submit" value="Add Note">
-</form><br><br>
-
-<form action="/applications/<%= @application.id %>" method="post">
-  <input type="hidden" id="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Application">
-</form>
+</div>

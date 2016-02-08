@@ -2,25 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Application Tracker</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="/stylesheets/navbar-fixed-top.css" rel="stylesheet">
+  <%= yield_content :head %>
 </head>
 <body>
-  <a href="/">Home</a>
-  <% if logged_in? %>
-    <a href="/companies/new">Create a New Application</a>
-    <a href="/applications">View All Applications</a>
-    <a href="/interviews">View All Interviews</a>
-    <a href="/logout">Log Out</a>
-    <p>You are logged in as <%= current_applicant.username %></p>
-  <% else %>
-    <a href="/signup">Sign Up</a>
-    <a href="/login">Log In</a>
-  <% end %>
-  <%= yield %>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span> 
+        </button>
+        <a class="navbar-brand">Application Tracker</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+        <% if logged_in? %>
+          <li><a href="/companies/new">Create a New Application</a></li>
+          <li><a href="/applications">View All Applications</a></li>
+          <li><a href="/interviews">View All Interviews</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <p class="nav navbar-text">Logged in as <%= current_applicant.username %></p>
+          <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+        </ul>
+        <% else %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+        </ul>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+
   <% if flash[:error] %>
-    <% flash[:error].each do |e| %>
-      <p class="error_message"><%= e + "." %></p>
+  <div class="container">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <% flash[:error].each do |e| %>
+        <p class="error_message"><%= e + "." %></p>
+      <% end %>
     <% end %>
-  <% end %>
+    </div>
+  </div>
+  <%= yield %>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>
