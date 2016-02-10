@@ -1,5 +1,5 @@
 class Applicant < ActiveRecord::Base
-  has_many :applications
+  has_many :applications, dependent: :destroy
   has_many :interviews, through: :applications
   has_many :companies, through: :applications
 

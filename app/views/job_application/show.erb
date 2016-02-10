@@ -12,10 +12,10 @@
 
   <h3>Application Info</h3>
   <p>Submission Date: <%= @application.submission_date.nil? ? "N/A" : @application.submission_date.localtime.strftime("%-m/%-d/%Y") %></p>
-  <% if @application.cover_letter %>
+  <% if !@application.cover_letter.empty? %>
     <p><a href="<%= @application.cover_letter %>" target="_blank">Cover Letter Submitted</a></p>
   <% end %>
-  <% if @application.resume %>
+  <% if !@application.resume.empty? %>
     <p><a href="<%= @application.resume %>" target="_blank">Resume Submitted</a></p>
   <% end %>
   <p>Follow-up Date: <%= @application.follow_up_date.nil? ? "N/A" : @application.follow_up_date.localtime.strftime("%A, %-m/%-d/%Y") %></p>

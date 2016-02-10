@@ -3,8 +3,8 @@ class JobApplicationController < ApplicationController
   post '/applications' do
     @company = Company.find_by(params[:company])
     application = Application.new(params[:application])
-    application.applicant_id = session[:id]
-    application.company_id = @company.id
+    application.applicant = current_applicant
+    application.company = @company
     application.follow_up_date = Chronic.parse(params[:application][:follow_up_date])
     application.submission_date = Chronic.parse(params[:application][:submission_date])
     if application.save
